@@ -4,7 +4,7 @@ import { blogRoutes } from "../modules/blog/blog.routes";
 const router = Router();
 const modulRoutes = [
     {
-        path:'/blog',
+        path:'/blogs',
         route:blogRoutes
     }
 ]
