@@ -1,11 +1,11 @@
-import { TBlog } from "./blog.interface"
-import { blogModel } from "./blog.model"
+import { TBlog } from './blog.interface';
+import { blogModel } from './blog.model';
 
-const createBlogsIntoDb =async (payload:TBlog)=> {
-  const result = await blogModel.create(payload)
-  return result
-}
+const createBlogsIntoDb = async (payload: TBlog) => {
+  const result = await blogModel.create(payload);
+  return result;
+};
 
-export const blogsService ={
-createBlogsIntoDb
-}
+export const blogsService = {
+  createBlogsIntoDb,
+};

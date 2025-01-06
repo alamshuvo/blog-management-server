@@ -1,10 +1,7 @@
-import { Error } from "mongoose";
+import { Error } from 'mongoose';
 
-  
-  export type TGenericErrorResponse = {
-    statusCode: number;
-    message: string;
-    err:Error
-    
-  };
-  
+export type TGenericErrorResponse = {
+  statusCode: number;
+  message: string;
+  err: Error;
+};

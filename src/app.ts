@@ -8,10 +8,8 @@ const app: Application = express();
 app.use(express.json());
 app.use(cors());
 
-
 //application route
-app.use('/api',router)
-
+app.use('/api', router);
 
 app.get('/', (_req: Request, res: Response) => {
   const a = 10;
@@ -21,9 +19,7 @@ app.get('/', (_req: Request, res: Response) => {
 // global error handlers
 app.use(globalErrorHandler);
 //not found route
-app.use(notFoundRoute)
-
-
+app.use(notFoundRoute);
 
 console.log(process.cwd());
 
