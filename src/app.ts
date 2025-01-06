@@ -1,8 +1,8 @@
 import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import router from './app/routes';
-import notFoundRoute from './app/middleware/auth';
 import globalErrorHandler from './app/middleware/globalErrorHandler';
+import notFoundRoute from './app/middleware/NotFoundRoute';
 const app: Application = express();
 //parser
 app.use(express.json());

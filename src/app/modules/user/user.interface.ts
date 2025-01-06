@@ -1,3 +1,5 @@
+import { Model } from "mongoose";
+
 type Trole = {
   role: 'admin' | 'user';
 };
@@ -23,3 +25,7 @@ export type TUser = {
     default: false;
   };
 };
+
+export interface UserModel extends Model<TUser>{
+  isPasswordMatched(plainTextPassword:string,hashedPassword:string):Promise<boolean>;
+}
