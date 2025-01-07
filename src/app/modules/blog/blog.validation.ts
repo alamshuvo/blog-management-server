@@ -8,7 +8,6 @@ const createBlogsValidation = z.object({
   }),
 });
 
-
 const updateBlogsValidation = z.object({
   body: z.object({
     title: z.string().optional(),
@@ -19,5 +18,5 @@ const updateBlogsValidation = z.object({
 
 export const blogValidation = {
   createBlogsValidation,
-  updateBlogsValidation
+  updateBlogsValidation,
 };

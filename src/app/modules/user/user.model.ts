@@ -42,7 +42,6 @@
 //   next()
 // })
 
-
 // userSchema.statics.isPasswordMatched = async function (
 //   plainTextPassword,
 //   hashedPassword,
@@ -51,4 +50,3 @@
 // };
 
 // export const userModel = model<TUser,UserModel>('user',userSchema)
-

@@ -1,19 +1,15 @@
-
-import { Model } from "mongoose";
-import { USER_ROLE } from "./auth.const";
+import { Model } from 'mongoose';
+import { USER_ROLE } from './auth.const';
 export type TLoginUser = {
-    email:string,
-    password:string
-}
-
-
-
+  email: string;
+  password: string;
+};
 
 type TRoleEnum = {
   role: {
     type: string;
     enum: ['admin' | 'user'];
-  }
+  };
 };
 
 type TName = {
@@ -22,7 +18,6 @@ type TName = {
   lastName: string;
 };
 
-
 export type TUser = {
   name: TName;
   email: string;
@@ -30,7 +25,7 @@ export type TUser = {
   role: {
     type: string;
     enum: ['admin' | 'user'];
-    default:'user'
+    default: 'user';
   };
   isBlocked?: {
     type: Boolean;
@@ -38,9 +33,11 @@ export type TUser = {
   };
 };
 
-export interface UserModel extends Model<TUser>{
-  isPasswordMatched(plainTextPassword:string,hashedPassword:string):Promise<boolean>;
+export interface UserModel extends Model<TUser> {
+  isPasswordMatched(
+    plainTextPassword: string,
+    hashedPassword: string,
+  ): Promise<boolean>;
 }
 
-
-export type Trole = keyof typeof USER_ROLE
+export type Trole = keyof typeof USER_ROLE;

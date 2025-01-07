@@ -1,4 +1,4 @@
-import { Model } from "mongoose";
+import { Model } from 'mongoose';
 
 type Trole = {
   role: 'admin' | 'user';
@@ -10,7 +10,6 @@ type TName = {
   lastName: string;
 };
 
-
 export type TUser = {
   name: TName;
   email: string;
@@ -18,7 +17,7 @@ export type TUser = {
   role: {
     type: string;
     enum: ['admin' | 'user'];
-    default:'user'
+    default: 'user';
   };
   isBlocked?: {
     type: Boolean;
@@ -26,6 +25,9 @@ export type TUser = {
   };
 };
 
-export interface UserModel extends Model<TUser>{
-  isPasswordMatched(plainTextPassword:string,hashedPassword:string):Promise<boolean>;
+export interface UserModel extends Model<TUser> {
+  isPasswordMatched(
+    plainTextPassword: string,
+    hashedPassword: string,
+  ): Promise<boolean>;
 }
