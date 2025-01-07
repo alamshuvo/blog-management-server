@@ -13,7 +13,6 @@ const createUserIntoDb = async (payload: TUser) => {
 
 const loginUser = async (payload: TLoginUser) => {
   const userExist = await userModel.findOne({ email: payload?.email });
-  console.log(userExist, payload?.email);
   if (!userExist) {
     throw new AppError(StatusCodes.UNAUTHORIZED, 'Invalid Credentials');
   }

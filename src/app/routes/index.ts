@@ -13,10 +13,10 @@ const modulRoutes = [
     path: '/auth',
     route: authRoute,
   },
-  // {
-  //   path:'/admin',
-  //   route:
-  // }
+     {
+   path:'/admin',
+   route:userRoutes
+  }
 ];
 modulRoutes.forEach((route) => router.use(route.path, route.route));
 

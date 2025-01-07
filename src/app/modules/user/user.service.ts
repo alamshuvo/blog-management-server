@@ -1,11 +1,18 @@
-import { TUser } from './user.interface';
-import { userModel } from './user.model';
+import { TUser } from "../auth/auth.interface";
+import { userModel } from "../auth/auth.model";
 
-const createUserIntoDb = async (payload: TUser) => {
-  const result = await userModel.create(payload);
+
+const updateBlockUser = async(userId:string,payload:TUser)=>{
+  console.log(payload,"service tekhe");
+  const updatePayload = { isBlocked: true };
+  const result = await userModel
+    .findByIdAndUpdate({ _id: userId }, updatePayload, {
+      new: true,
+      runValidators: true,
+    }) 
   return result;
-};
+}
 
 export const userService = {
-  createUserIntoDb,
+ updateBlockUser
 };
