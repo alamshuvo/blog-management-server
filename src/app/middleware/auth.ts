@@ -9,8 +9,8 @@ import { userModel } from "../modules/auth/auth.model";
 
  const auth =(...requiredRole : Trole[])=> {
   return catchAsync(async (req:Request,res:Response,next:NextFunction)=>{
-    const token  = req.headers.authorization;
-    console.log(token);
+    const token  = req.headers.authorization?.split(' ')[1];
+    // console.log(token,"auth tekhe");
     if (!token) {
       throw new AppError(StatusCodes.UNAUTHORIZED,"you are not authorized")
     }

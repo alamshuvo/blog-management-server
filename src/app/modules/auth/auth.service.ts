@@ -43,6 +43,8 @@ const loginUser = async (payload:TLoginUser)=>{
         author:userExist?._id
     }
     const accessToken =  createToken(jwtPayload,config.jwt_access_token as string,config.jwt_Expires_in as string)
+    console.log(accessToken,"auth service tekhe");
+    
     return {
         accessToken
     }

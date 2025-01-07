@@ -12,4 +12,8 @@ router.post(
   blogController.createBlog,
 );
 
+
+// update blog
+router.patch('/:id',auth(USER_ROLE.user),validateRequest(blogValidation.updateBlogsValidation),blogController.updateBlog)
+
 export const blogRoutes = router;

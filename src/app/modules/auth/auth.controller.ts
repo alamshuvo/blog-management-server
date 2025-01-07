@@ -22,6 +22,8 @@ const createUser = catchAsync(async(req,res)=>{
 
 
 const loginUser = catchAsync(async(req,res)=>{
+    
+    
     const body =req.body;
     const result = await AuthService.loginUser(body)
     const { accessToken } = result;
