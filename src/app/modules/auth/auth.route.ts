@@ -17,4 +17,7 @@ router.post(
   authController.loginUser,
 );
 
+//admin actions
+//block user
+router.patch('/admin/users/:userId/block');
 export const authRoute = router;

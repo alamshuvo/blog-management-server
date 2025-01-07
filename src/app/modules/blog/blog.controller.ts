@@ -74,12 +74,27 @@ const deleteBlog = catchAsync(async (req, res) => {
       'you are not authorized for deleting blog',
     );
   }
-  const result = await blogModel.findByIdAndDelete(blogId)
+  const result = await blogModel.findByIdAndDelete(blogId);
   sendResponse(res, {
     sucess: true,
     message: 'Blog deleted Sucessfully',
     statusCode: StatusCodes.OK,
-    data:null
+  });
+});
+
+// get blog data
+const getALlBlogs = catchAsync(async (req, res) => {
+  const result = await blogsService.getAllBlogsFromDb(req.query);
+  sendResponse(res, {
+    sucess: true,
+    message: 'Blog fetched Sucessfully',
+    statusCode: StatusCodes.OK,
+    data: result.map((blog) => ({
+      id: blog._id,
+      title: blog.title,
+      content: blog.content,
+      author: blog.author,
+    })),
   });
 });
 
@@ -87,4 +102,5 @@ export const blogController = {
   createBlog,
   updateBlog,
   deleteBlog,
+  getALlBlogs,
 };
