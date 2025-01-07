@@ -4,6 +4,7 @@ import AppError from "../../error/AppError";
 import { userModel } from "../auth/auth.model";
 import { userService } from "./user.service";
 import sendResponse from "../../../utils/sendResponse";
+import { blogModel } from "../blog/blog.model";
 
 
 
@@ -29,6 +30,18 @@ const updateUser = catchAsync(async(req,res)=>{
   
 })
 
+
+const deleteBlog = catchAsync(async (req, res) => {
+
+  const blogId = req?.params?.id;
+  const result = await blogModel.findByIdAndDelete(blogId);
+  sendResponse(res, {
+    sucess: true,
+    message: 'Blog deleted Sucessfully',
+    statusCode: StatusCodes.OK,
+  });
+});
 export const userController = {
- updateUser
+ updateUser,
+ deleteBlog
 };
