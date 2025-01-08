@@ -16,3 +16,21 @@ async function main() {
   }
 }
 main();
+
+
+process.on('unhandledRejection', () => {
+  console.log(`unhandle Regejection is detected shutting the the surver .....`);
+
+  if (server) {
+    server.close(() => {
+      process.exit(1);
+    });
+  }
+  process.exit(1);
+});
+
+process.on('uncaughtException', () => {
+  console.log('uncaught Exception is rejected shutting down......');
+
+  process.exit(1);
+});

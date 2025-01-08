@@ -35,6 +35,9 @@ const deleteBlog = catchAsync(async (req, res) => {
 
   const blogId = req?.params?.id;
   const result = await blogModel.findByIdAndDelete(blogId);
+  if (result===null) {
+    throw new AppError(StatusCodes.BAD_REQUEST,"blog is not found")
+  }
   sendResponse(res, {
     sucess: true,
     message: 'Blog deleted Sucessfully',
