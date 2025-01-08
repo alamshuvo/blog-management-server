@@ -112,38 +112,24 @@ This project is an Express application with TypeScript,integrating MongoDB with 
 - "email": "john@example.com",
  - "password": "securepassword"
 }
-- sucess {
--"success": false,
- - "message": "Invalid credentials",
- - "statusCode": 401,
- - "error": { "details" },
- - "stack": "error stack"
-}
+
 
  # 3. Create Blog
    - EndPoint : POST /api/blogs
-   - {
- - "title": "My First Blog",
-  -"content": "This is the content of my blog."
+   - {"title": "My First Blog","content": "This is the content of my blog."
 }
 
 # 4. Update blog
   - EndPoint : PATCH /api/blogs/:id
   - request headers = Authorization: Bearer <token>
-  - {
-  -"title": "Updated Blog Title",
-  -"content": "Updated content."
+  - {"title": "Updated Blog Title","content": "Updated content."
 }
   - Response : Sucess message with update Blog data 
 
 # 5. Delete Blog
  - Endpoint : DELETE /api/blogs/:id
 - request headers = Authorization: Bearer <token>
- - Response {
-  -"success": true,
-  -"message": "Blog deleted successfully",
-  -"statusCode": 200
-}
+ - Response {"success": true,"message": "Blog deleted successfully","statusCode": 200}
 
 
 # Get All Blog(public)
@@ -155,19 +141,11 @@ This project is an Express application with TypeScript,integrating MongoDB with 
 # Block User
 - api PATCH - /api/admin/users/:userId/block
 - request headers = Authorization: Bearer <token>
-- response {
- - "success": true,
- - "message": "User blocked successfully",
-  -"statusCode": 200
-}
+- response {"success": true,"message": "User blocked successfully","statusCode": 200}
 # Delete Blog 
 - api DELETE - /api/admin/blogs/:id
 - Request Header:Authorization: Bearer <admin_token>
-- response {
--  "success": true,
- - "message": "Blog deleted successfully",
- - "statusCode": 200
-}
+- response {"success": true,"message": "Blog deleted successfully","statusCode": 200}
 
 
   # If you want Contact me
