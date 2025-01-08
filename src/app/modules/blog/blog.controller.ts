@@ -7,7 +7,6 @@ import AppError from '../../error/AppError';
 import { userModel } from '../auth/auth.model';
 
 const createBlog = catchAsync(async (req, res) => {
-  console.log(req.headers.authorization, 'blog er controller tekhe');
   const author = req?.user?.author;
 
   const payload = req.body;

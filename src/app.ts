@@ -12,8 +12,8 @@ app.use(cors());
 app.use('/api', router);
 
 app.get('/', (_req: Request, res: Response) => {
-  const a = 10;
-  res.send(a);
+  
+  res.send("blog server is running");
 });
 
 // global error handlers

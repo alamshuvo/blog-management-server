@@ -1,4 +1,4 @@
-import { ZodError, ZodIssue } from 'zod';
+import { ZodError } from 'zod';
 import { TGenericErrorResponse } from '../interface/interface';
 
 const handleZodError = (err: ZodError): TGenericErrorResponse => {

@@ -1,8 +1,8 @@
 import { Types } from 'mongoose';
 
 export type TBlog = {
-  title: String;
-  content: String;
+  title: string;
+  content: string;
   author?: Types.ObjectId;
   isPublished?: boolean;
 };

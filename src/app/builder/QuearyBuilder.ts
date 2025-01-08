@@ -22,7 +22,7 @@ class QueryBuilder<T> {
     return this;
   }
   filter() {
-    let queryObj = { ...this.query };
+    const queryObj = { ...this.query };
     if (queryObj.filter) {
       queryObj.author = queryObj.filter;
       delete queryObj.filter;
@@ -55,6 +55,5 @@ class QueryBuilder<T> {
     this.modelQuery = this.modelQuery.sort(sortStr);
     return this;
   }
-
 }
 export default QueryBuilder;

@@ -1,9 +1,5 @@
 import { Model } from 'mongoose';
 
-type Trole = {
-  role: 'admin' | 'user';
-};
-
 type TName = {
   firstName: string;
   middleName: string;
@@ -20,7 +16,7 @@ export type TUser = {
     default: 'user';
   };
   isBlocked?: {
-    type: Boolean;
+    type: boolean;
     default: false;
   };
 };

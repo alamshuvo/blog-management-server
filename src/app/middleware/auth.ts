@@ -3,7 +3,7 @@ import { catchAsync } from '../../utils/catchAsync';
 import { Trole } from '../modules/auth/auth.interface';
 import AppError from '../error/AppError';
 import { StatusCodes } from 'http-status-codes';
-import Jwt, { JwtPayload } from 'jsonwebtoken';
+import jwt, { JwtPayload } from 'jsonwebtoken';
 import config from '../config';
 import { userModel } from '../modules/auth/auth.model';
 
@@ -14,21 +14,25 @@ const auth = (...requiredRole: Trole[]) => {
     if (!token) {
       throw new AppError(StatusCodes.UNAUTHORIZED, 'you are not authorized');
     }
-    Jwt.verify(
-      token,
-      config.jwt_access_token as string,
-      async function (err, decode) {
+    
+    
+    // if (token !== config.jwt_access_token) {
+    //   throw new AppError(StatusCodes.UNAUTHORIZED,"you are not authorized")
+    // }
+    
+    jwt.verify(token,(config.jwt_access_token as string),async  (err, decode)=> {
         if (err) {
           throw new AppError(
             StatusCodes.UNAUTHORIZED,
             'you are not authorized',
           );
+          
         }
-        const { email, role, author } = decode as JwtPayload;
+        
+        const { email, role } = decode as JwtPayload;
 
         // checking the user is exist
         const user = await userModel.findOne({ email: email });
-        console.log(user);
 
         if (!user) {
           throw new AppError(

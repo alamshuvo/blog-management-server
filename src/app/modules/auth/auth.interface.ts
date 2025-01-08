@@ -28,7 +28,7 @@ export type TUser = {
     default: 'user';
   };
   isBlocked?: {
-    type: Boolean;
+    type: boolean;
     default: false;
   };
 };

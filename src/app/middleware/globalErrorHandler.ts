@@ -7,6 +7,7 @@ import AppError from '../error/AppError';
 import handleValidationError from '../error/handleValidationError';
 import handleCastError from '../error/handleCastError';
 import handleDuplicateError from '../error/handleDuplicateError';
+import handleInternalServerError from '../error/handleInternalServerError';
 
 const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
   let statusCodes = err.StatusCode || 400;
@@ -22,24 +23,27 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
     statusCodes = err?.statusCode;
     message = err?.message;
     error = err;
-  }
-  else if (err?.name === 'ValidationError') {
+  } else if (err?.name === 'ValidationError') {
     const simpliFiedError = handleValidationError(err);
-    statusCodes = simpliFiedError?.statusCode
-    message = simpliFiedError?.message
-    error= simpliFiedError?.message
-  }
-  else if (err?.name === 'castError') {
-    const simpliFiedError = handleCastError(err)
-    statusCodes = simpliFiedError?.statusCode
-    message = simpliFiedError?.message
-    error= simpliFiedError?.err
-  }
-  else if (err?.code === 11000) {
+    statusCodes = simpliFiedError?.statusCode;
+    message = simpliFiedError?.message;
+    error = simpliFiedError?.message;
+  } else if (err?.name === 'castError') {
+    const simpliFiedError = handleCastError(err);
+    statusCodes = simpliFiedError?.statusCode;
+    message = simpliFiedError?.message;
+    error = simpliFiedError?.err;
+  } else if (err?.code === 11000) {
     const simpliFiedError = handleDuplicateError(err);
-    statusCodes = simpliFiedError?.statusCode
-    message = simpliFiedError?.message
-    error = simpliFiedError?.err
+    statusCodes = simpliFiedError?.statusCode;
+    message = simpliFiedError?.message;
+    error = simpliFiedError?.err;
+  }
+  else if (err?.code === 500){
+    const simpliFiedError = handleInternalServerError(err)
+    statusCodes = simpliFiedError?.statusCode;
+    message = simpliFiedError?.message;
+    error = simpliFiedError?.err;
   }
 
   res.status(statusCodes).json({

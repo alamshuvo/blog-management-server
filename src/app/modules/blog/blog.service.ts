@@ -4,8 +4,6 @@ import { TBlog } from './blog.interface';
 import { blogModel } from './blog.model';
 
 const createBlogsIntoDb = async (payload: TBlog, author: string) => {
-  console.log(author, 'blog Service tekhe');
-
   const result = await (
     await blogModel.create({ ...payload, author })
   ).populate('author');

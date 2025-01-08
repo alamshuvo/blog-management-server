@@ -5,7 +5,7 @@ const notFoundRoute = (req: Request, res: Response, next: NextFunction) => {
   res.status(StatusCodes.NOT_FOUND).json({
     sucess: false,
     message: 'Api not found',
-    StatusCodes:StatusCodes.NOT_FOUND,
+    StatusCodes: StatusCodes.NOT_FOUND,
     error: '',
   });
 };
